@@ -20,7 +20,11 @@
   },
   "homepage": "https://github.com/leviathan88/TypescriptRepo#readme",
   "devDependencies": {
-    "gulp-typescript": "^2.13.0"
+    "gulp": "^3.9.1",
+    "gulp-run-sequence": "^0.3.2",
+    "gulp-tslint": "^4.3.5",
+    "gulp-typescript": "^2.13.0",
+    "tslint": "^3.7.4"
   },
   "dependencies": {
     "jquery": "^2.2.3"
