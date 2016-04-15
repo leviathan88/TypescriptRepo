@@ -1,0 +1,28 @@
+{
+  "name": "ts-lear",
+  "version": "1.0.0",
+  "description": "Learning Typescript",
+  "main": "test.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leviathan88/TypescriptRepo.git"
+  },
+  "keywords": [
+    "Typescript"
+  ],
+  "author": "Elvis Dedic",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/leviathan88/TypescriptRepo/issues"
+  },
+  "homepage": "https://github.com/leviathan88/TypescriptRepo#readme",
+  "devDependencies": {
+    "gulp-typescript": "^2.13.0"
+  },
+  "dependencies": {
+    "jquery": "^2.2.3"
+  }
+}
