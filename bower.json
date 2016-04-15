@@ -1,0 +1,26 @@
+{
+  "name": "ts-lear",
+  "description": "Learning Typescript",
+  "main": "test.js",
+  "authors": [
+    "Elvis Dedic"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "Typescript"
+  ],
+  "homepage": "https://github.com/leviathan88/TypescriptRepo",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.3"
+  },
+  "devDependencies": {
+    "jasmine-core": "jasmine#^2.4.1"
+  }
+}
