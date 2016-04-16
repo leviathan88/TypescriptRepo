@@ -3,7 +3,7 @@ var tslint = require('gulp-tslint');
 var ts = require('gulp-typescript');
 var runSequence = require('run-sequence').use(gulp);
 var karma = require("gulp-karma");
-var browserSync = require('browser-sync');
+var browserSync = require('browser-sync').create();
 
 var browserify  = require('browserify'),
     transform   = require('vinyl-transform'),
@@ -69,8 +69,8 @@ gulp.task('karma', function(cb) {
        .on('end', cb)
        .on('error', function(err) {
          // Make sure failed tests cause gulp to exit non-zero
-         throw err;
-       });
+         //throw err;
+       })
 });
 
 gulp.task('bundle', function(cb) {
@@ -133,7 +133,7 @@ gulp.task('default', function(cb) {
     ['tsc', 'tsc-tests'],        // compile
     ['bundle-js','bundle-test'], // optimize
     'karma',                      // test
-    //'browser-sync',              // serve
+    'browser-sync',              // serve
     cb                           // callback
   );
 });
