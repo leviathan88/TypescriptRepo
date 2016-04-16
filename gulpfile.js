@@ -2,6 +2,8 @@ var gulp = require('gulp');
 var tslint = require('gulp-tslint');
 var ts = require('gulp-typescript');
 var runSequence = require('run-sequence').use(gulp);
+var karma = require("gulp-karma");
+var browserSync = require('browser-sync');
 
 var browserify  = require('browserify'),
     transform   = require('vinyl-transform'),
@@ -58,6 +60,45 @@ gulp.task('tsc-tests', function() {
              .js.pipe(gulp.dest('./temp/test/'));
 });
 
+gulp.task('karma', function(cb) {
+  gulp.src('./dist/test/**/**.test.js')
+      .pipe(karma({
+         configFile: 'karma.conf.js',
+         action: 'run'
+       }))
+       .on('end', cb)
+       .on('error', function(err) {
+         // Make sure failed tests cause gulp to exit non-zero
+         throw err;
+       });
+});
+
+gulp.task('bundle', function(cb) {
+  runSequence('build', [
+    'bundle-js', 'bundle-test'
+  ], cb);
+});
+
+gulp.task('test', function(cb) {
+  runSequence('bundle', ['karma'], cb);
+});
+
+gulp.task('browser-sync', ['test'], function() {
+  browserSync({
+    server: {
+      baseDir: "./dist"
+    }
+  });
+
+  return gulp.watch([
+    "./dist/source/js/**/*.js",
+    "./dist/source/css/**.css",
+    "./dist/test/**/**.test.js",
+    "./dist/data/**/**",
+    "./index.html"
+  ], [browserSync.reload]);
+});
+
 gulp.task('lint', function() {
   return gulp.src([
    './source/ts/**/**.ts', './test/**/**.test.ts'
@@ -91,7 +132,7 @@ gulp.task('default', function(cb) {
     'lint',                      // lint
     ['tsc', 'tsc-tests'],        // compile
     ['bundle-js','bundle-test'], // optimize
-    //'karma',                      // test
+    'karma',                      // test
     //'browser-sync',              // serve
     cb                           // callback
   );
