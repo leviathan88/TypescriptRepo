@@ -5,7 +5,7 @@
 
 //An arrow function expression has a shorter syntax compared to function expressions and lexically binds the value of the this operator.
 class Person {
-    name : string;
+  name : string;
   constructor(name : string) {
     this.name = name;
   }

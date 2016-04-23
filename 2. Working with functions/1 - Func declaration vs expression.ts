@@ -16,7 +16,7 @@ var greetUnnamed = function(name: string): string {
 }
 
 //when this code is compiled into JS, first log statment will work because JS knows about the declaration function
-//and can parse it before program is esecuted
+//and can parse it before program is executed
 //However, the second alert statement will throw an exception, which indicates that greetUnnamed is not a function.
 //The exception is thrown because the greetUnnamed assignment must be completed before the function can be evaluated.
 
